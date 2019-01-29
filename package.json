@@ -1,0 +1,6 @@
+{
+    "scripts": {
+        "build": "rm lambda_code.zip && zip -X lambda_code.zip index.js",
+        "deploy": "npm run build && terraform apply"
+    }
+}

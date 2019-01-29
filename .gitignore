@@ -1,0 +1,8 @@
+#Internal Mac files
+.DS_Store
+
+#Terraform local state folder
+.terraform/
+
+#Temp zip of the lambda code
+lambda_code.zip
