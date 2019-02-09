@@ -117,6 +117,7 @@ resource "aws_lb" "object_finder" {
   internal                   = false
   load_balancer_type         = "application"
   enable_deletion_protection = true
+  security_groups            = ["${aws_security_group.allow_all.id}"]
   subnets                    = ["${aws_default_subnet.default_az1.id}", "${aws_default_subnet.default_az2.id}"]
 }
 
