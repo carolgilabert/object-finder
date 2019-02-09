@@ -6,3 +6,11 @@
 
 #Temp zip of the lambda code
 lambda_code.zip
+
+#Node modules
+node_modules/
+
+#Frontend cache & node modules
+frontend/.cache/
+frontend/node_modules/
+frontend/public/

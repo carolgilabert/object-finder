@@ -150,3 +150,44 @@ resource "aws_lb_listener" "object_finder_alb_listener" {
     target_group_arn = "${aws_lb_target_group.object_finder_target_group.arn}"
   }
 }
+
+resource "aws_s3_bucket" "frontend" {
+  bucket = "carolgilabert-object-finder-frontend"
+  acl = "public-read"
+
+  tags {
+    Name = "Object Finder"
+    Environment = "production"
+  }
+
+  cors_rule {
+    allowed_headers = ["*"]
+    allowed_methods = ["GET","POST"]
+    allowed_origins = ["*"]
+    expose_headers = ["ETag"]
+    max_age_seconds = 3000
+  }
+
+  policy = <<EOF
+{
+  "Version": "2008-10-17",
+  "Statement": [
+    {
+      "Sid": "PublicReadForGetBucketObjects",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "*"
+      },
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::carolgilabert-object-finder-frontend/*"
+    }
+  ]
+}
+EOF
+
+  website {
+    index_document = "index.html"
+    error_document = "404.html"
+  }
+}
+

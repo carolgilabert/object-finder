@@ -1,6 +1,23 @@
 {
+    "name": "object-finder",
+    "private": true,
+    "description": "Proving out a static-site -> ALB -> lambda -> s3 flow to retrieve objects and display on a UI.",
+    "version": "0.1.0",
+    "author": "Carolina Gilabert <carolgilabert@gmail.com>",
+    "license": "MIT",
     "scripts": {
-        "build": "rm lambda_code.zip && zip -X lambda_code.zip index.js",
-        "deploy": "npm run build && terraform apply"
+        "build:site": "gatsby build --build-dir frontend && node upload_site.js",
+        "build:lambda": "rm lambda_code.zip && zip -X lambda_code.zip index.js",
+        "deploy": "npm run build:site && npm run build:lambda && terraform apply"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://gitlab.com/carolgilabert/object-finder"
+    },
+    "bugs": {
+        "url": "https://gitlab.com/carolgilabert/object-finder/issues"
+    },
+    "dependencies": {
+        "aws-sdk": "^2.400.0"
     }
 }
