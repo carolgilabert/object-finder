@@ -31,7 +31,7 @@ const Layout = ({ children }) => (
           <footer>
             © {new Date().getFullYear()}, Built with 💛 by
             {` `}
-            <a href="https://twitter.com/CarolSaysThings" target="_blank">Carolina Gilabert</a>
+            <a href="https://twitter.com/CarolSaysThings" target="_blank" rel="noopener noreferrer">Carolina Gilabert</a>
           </footer>
         </div>
       </>
