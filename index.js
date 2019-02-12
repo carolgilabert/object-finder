@@ -19,6 +19,17 @@ const listDirectories = params => {
 
 exports.handler = async (event) => {
 
+    if (event.httpMethod === 'OPTIONS') {
+      return {
+        statusCode: 200,
+        statusDescription: '200 OK',
+        isBase64Encoded: false,
+        headers: {
+          "Access-Control-Allow-Origin": "*"
+        }
+      };
+    }
+
     const objects = await listDirectories();
 
     // TODO implement
@@ -27,6 +38,7 @@ exports.handler = async (event) => {
         statusDescription: '200 OK',
         isBase64Encoded: false,
         headers: {
+          "Access-Control-Allow-Origin": "*",
           "Content-Type": "text/json; charset=utf-8"
         },
         body: JSON.stringify(objects),
