@@ -18,6 +18,6 @@
         "url": "https://gitlab.com/carolgilabert/object-finder/issues"
     },
     "dependencies": {
-        "aws-sdk": "^2.400.0"
+        "aws-sdk": "^2.814.0"
     }
 }
